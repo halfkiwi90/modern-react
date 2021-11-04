@@ -3,18 +3,37 @@ import axios from "axios";
 
 const Search = () => {
 	const [term, setTerm] = useState("dog");
+	const [debouncedTerm, setDebouncedTerm] = useState(term);
 	const [results, setResults] = useState([]);
 
 	const renderedResults = results.map((result) => {
 		return (
-			<div className="item">
+			<div key={result.pageid} className="item">
+				<div className="right floated content">
+					<a
+						className="ui button"
+						href={`https://en.wikipedia.org?curid=${result.pageid}`}
+					>
+						Go
+					</a>
+				</div>
 				<div className="content">
 					<div className="header">{result.title}</div>
-					{result.snippet}
+					<div dangerouslySetInnerHTML={{ __html: result.snippet }}></div>
 				</div>
 			</div>
 		);
 	});
+
+	useEffect(() => {
+		const prevTimeId = setTimeout(() => {
+			setDebouncedTerm(term);
+		}, 500);
+
+		return () => {
+			clearTimeout(prevTimeId);
+		};
+	}, [term]);
 
 	useEffect(() => {
 		const search = async () => {
@@ -24,15 +43,17 @@ const Search = () => {
 					list: "search",
 					format: "json",
 					origin: "*",
-					srsearch: term,
+					srsearch: debouncedTerm,
 				},
 			});
 
 			setResults(data.query.search);
 		};
 
-		search();
-	}, [term]);
+		if (debouncedTerm) {
+			search();
+		}
+	}, [debouncedTerm]);
 
 	return (
 		<div className="ui form">
