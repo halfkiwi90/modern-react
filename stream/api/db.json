@@ -1,0 +1,50 @@
+{
+  "streams": [
+    {
+      "title": "title 1",
+      "description": "dsc 1",
+      "id": 1
+    },
+    {
+      "title": "new stream with id",
+      "description": "ya ho",
+      "userId": "112216653099415113181",
+      "id": 2
+    },
+    {
+      "title": "hey",
+      "description": "hi",
+      "userId": "112216653099415113181",
+      "id": 3
+    },
+    {
+      "title": "look history",
+      "description": "yo",
+      "userId": "112216653099415113181",
+      "id": 4
+    },
+    {
+      "title": "look history again",
+      "description": "yoyo",
+      "userId": "112216653099415113181",
+      "id": 5
+    },
+    {
+      "title": "fix typo",
+      "description": "po",
+      "userId": "112216653099415113181",
+      "id": 6
+    },
+    {
+      "title": "resue",
+      "description": "!!",
+      "userId": "112216653099415113181",
+      "id": 7
+    },
+    {
+      "title": "edit",
+      "description": "11",
+      "id": 8
+    }
+  ]
+}
